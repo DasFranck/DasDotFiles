@@ -2,15 +2,11 @@
 
 LOGIN='hochst_f'
 
-#Installation de zsh
-if	[ ! -f /bin/zsh ] 
-	then
-	echo "Installation de zsh"
-	(sudo zypper -n install zsh && echo "zsh installé avec succès") || echo "Erreur dans l'installation de zsh"
-else
-	echo "zsh est déjà installé"
-fi
+#Installation des packages requis
+sudo zypper -n i3 i3status zsh xinit MozillaFirefox vim
 
+#Installation de oh-my-zsh
+curl -L http://install.ohmyz.sh | sh
 
 #Mise par défaut de zsh	
 if	[[ $SHELL = '/bin/zsh' ]]
@@ -19,29 +15,21 @@ if	[[ $SHELL = '/bin/zsh' ]]
 else
 	echo "zsh est déjà le shell par défaut"
 fi
-
 	
 #Configuration de zsh
-(cp -f .zshrc /home/$LOGIN/.zshrc && echo "zsh configuré avec succès") || echo "Erreur dans la configuration de zsh"
+(cp -f zshrc /home/$LOGIN/.zshrc && echo "zsh configuré avec succès") || echo "Erreur dans la configuration de zsh"
 
-#Installation de xinit
-if	[ ! -f /usr/bin/xinit ] 
-	then
-	echo "Installation de i3"
-	(sudo zypper -n install xinit && echo "xinit installé avec succès") || echo "Erreur dans l'installation de xinit"
-else
-	echo "xinit est déjà installé"
-fi
+#Configuration de oh-my-zsh
+(cp -f das.zsh-theme /home/$LOGIN/.oh-my-zsh/themes/ && echo "Thème Das de oh-my-zsh installé avec succès") || echo "Erreur dans l'installation du thème Das de oh-my-zsh"
 
 #Configuration de xinit
-(cp -f .xinitrc /home/$LOGIN/.xinitrc && echo "xinit configuré avec succès") || echo "Erreur dans la configuration de xinit"
+(cp -f xinitrc /home/$LOGIN/.xinitrc && echo "xinit configuré avec succès") || echo "Erreur dans la configuration de xinit"
 
-#Installation de i3
-if	[ ! -f /usr/bin/i3 ] 
-	then
-	echo "Installation de i3"
-	(sudo zypper -n install zsh && echo "i3 installé avec succès") || echo "Erreur dans l'installation de i3"
-else
-	echo "i3 est déjà installé"
-fi
+#Configuration de i3
+(cp -f i3/config /home/$LOGIN/.i3/config && echo "i3 configuré avec succès") || echo "Erreur dans la configuration de i3"
 
+#Configuration de i3status
+(cp -f i3status.conf /home/$LOGIN/.i3status.conf && echo "i3status configuré avec succès") || echo "Erreur dans la configuration de i3status"
+
+#Installation du colorsheme vim
+(cp -f jellybeans.vim /home/$LOGIN/.vim/colors/jellybeans && echo "jellybeans.vim installé avec succès") || echo "Erreur dans l'installation de jellybeans.vim"
