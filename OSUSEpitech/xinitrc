@@ -1,0 +1,7 @@
+feh --bg-scale /home/dasfranck/Wallpaper.jpg
+conky
+setxkbmap -option grp:alt_shift_toggle fr,us
+
+numlockx &
+
+exec i3
