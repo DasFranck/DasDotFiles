@@ -31,13 +31,12 @@ alias inf-eject='while :; do eject; done'
 alias DasIP='echo "$(curl -s http://ipecho.net/plain)"'
 alias DasMount='sudo mount /dev/sdc1 /mnt/usb && cd /mnt/usb'
 alias DasPing='sudo ping google.fr -c 15'
+alias DaSuya='yaourt -Suya'
+alias DaSyu='yaourt -Syu'
 alias DasUmount='sudo umount /mnt/usb/'
 alias DasV='uname -a'
-alias patatin='sudo zypper install'
-alias patatup='sudo zypper update'
-alias patatupg='sudo zypper dist-upgrade'
-alias zypper='sudo zypper'
-alias yast='sudo yast'
+alias pacman='sudo pacman'
+alias refreshmirrors='reflector --verbose -l 200 --sort rate --save /etc/pacman.d/mirrorlist'
 
 source $ZSH/oh-my-zsh.sh
 
