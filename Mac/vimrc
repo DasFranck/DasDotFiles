@@ -1,0 +1,104 @@
+" Vundle Init ---------------------------------------------
+set nocompatible
+filetype off
+
+" Vundle --------------------------------------------------
+set rtp+=$BUNDLE_DIR/neobundle.vim/
+call neobundle#begin()
+
+NeoBundleFetch 'gmarik/Vundle.vim'
+
+" Syntax Check
+NeoBundle 'scrooloose/syntastic'
+
+" Git
+NeoBundle 'tpope/vim-fugitive'
+
+" NerdTree (Explorer File)
+NeoBundle 'scrooloose/nerdtree'
+
+" Bar/Graphic
+NeoBundle 'bling/vim-airline'
+
+" Modif vim
+NeoBundle 'airblade/vim-gitgutter'
+
+" GPG
+NeoBundle 'jamessan/vim-gnupg'
+
+" C
+NeoBundle 'c.vim'
+
+" R
+NeoBundle 'Vim-R-plugin'
+
+" whiteSpaces
+NeoBundle 'ntpeters/vim-better-whitespace'
+
+" CtrlP
+NeoBundle 'kien/ctrlp.vim'
+
+" WebDevIcons
+NeoBundle 'ryanoasis/vim-webdevicons'
+
+" MarkDown
+NeoBundle 'tpope/vim-markdown'
+
+" NetRW
+NeoBundle 'netrw.vim'
+
+call neobundle#end()
+filetype plugin indent on
+
+" Config ------------------------------------------------------------
+set wildmenu
+set encoding=utf8
+syntax on
+set ruler
+colorscheme jellybeans
+
+set autoindent
+set expandtab
+set softtabstop=2
+set tabstop=8
+set rnu
+set laststatus=2
+set shiftwidth=2
+let g:epitech_header = 1
+
+" Config MapLeader
+let mapleader=','
+
+" Airline
+let g:Powerline_symbols="fancy"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 0
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+set t_Co=256
+
+"C
+let  g:C_UseTool_cmake   = 'yes'
+let  g:C_UseTool_doxygen = 'yes'
+
+hi ColorColumn ctermbg=52
+set colorcolumn=80
+map <F11> :NERDTreeToggle<CR>
+
+" Show Tab
+set list
+hi SpecialKey ctermbg=black ctermfg=160
+set listchars=tab:>_
+
