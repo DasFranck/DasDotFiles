@@ -1,7 +1,7 @@
-MCL
+DasDotFiles
 ===
 
-Mes fichiers de config linux
+My Linux config files.
 
 ###### Uni -> Fichiers universel
 ###### Rak -> Fichiers pour le rack uniquement (Clavier QWERTY)
