@@ -3,8 +3,8 @@ set nocompatible
 filetype off
 
 " Vundle --------------------------------------------------
-set rtp+=$BUNDLE_DIR/neobundle.vim/
-call neobundle#begin()
+set rtp+=$BUNDLE_DIR/Users/DasFranck/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('/Users/DasFranck/.vim/bundle'))
 
 NeoBundleFetch 'gmarik/Vundle.vim'
 
@@ -46,6 +46,9 @@ NeoBundle 'tpope/vim-markdown'
 
 " NetRW
 NeoBundle 'netrw.vim'
+
+" CSV.vim
+NeoBundle 'csv.vim'
 
 call neobundle#end()
 filetype plugin indent on
@@ -89,16 +92,20 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 
 set t_Co=256
 
-"C
-let  g:C_UseTool_cmake   = 'yes'
-let  g:C_UseTool_doxygen = 'yes'
+" C
+"" let  g:C_UseTool_cmake   = 'yes'
+"" let  g:C_UseTool_doxygen = 'yes'
 
-hi ColorColumn ctermbg=52
-set colorcolumn=80
-map <F11> :NERDTreeToggle<CR>
+"" hi ColorColumn ctermbg=52
+"" set colorcolumn=80
 
 " Show Tab
 set list
 hi SpecialKey ctermbg=black ctermfg=160
 set listchars=tab:>_
 
+" Mac Config
+set backspace=indent,eol,start
+
+" Map Keys
+map <F11> :NERDTreeToggle<CR>
