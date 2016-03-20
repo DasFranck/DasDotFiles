@@ -23,14 +23,13 @@ zstyle ':completion:*' rehash true
 alias dhcpcd='sudo dhcpcd'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
+alias netsoul='sudo /home/dasfranck/jogsoul.pl /home/dasfranck/jogsoul.conf'
 alias mount='sudo mount'
 alias pacman='sudo pacman'
 alias p='pwd'
 alias pg='sudo ping google.fr -c 15'
-alias segv='LD_PRELOAD=~/Prog/my_malloc.so'
 alias tree='tree -C'
 alias umount='sudo umount'
-alias vcat='vimcat'
 alias wifi-menu='sudo wifi-menu'
 
 # DaScripts
@@ -41,8 +40,8 @@ alias DaSuya='yaourt -Suya --noconfirm && sudo pacman-optimize'
 alias DaSyu='yaourt -Syu --noconfirm && sudo pacman-optimize'
 alias DasUmount='sudo umount /mnt/usb/'
 alias DasV='uname -a'
+alias pacman='sudo pacman'
 alias refreshmirrors='sudo reflector --verbose -l 200 --sort rate --save /etc/pacman.d/mirrorlist'
-alias vncserv='x0vncserver -display :0 -passwordfile ~/.vnc/passwd'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,20 +51,15 @@ export BROWSER="firefox"
 # Editor
 export EDITOR="vim"
 
-# PATH
-export PATH="$PATH:/home/dasfranck/bin"
 
 # Locale
 export LC_NUMERIC="fr_FR.utf8"
+export LC_TIME="fr_FR.utf8"
 export LC_MONETARY="fr_FR.utf8"
 export LC_PAPER="fr_FR.utf8"
 export LC_ADDRESS="fr_FR.utf8"
 export LC_TELEPHONE="fr_FR.utf8"
 export LC_MEASUREMENT="fr_FR.utf8"
-
-# Acceleration Video Driver
-export LIBVA_DRIVER_NAME=vdpau
-export VDPAU_DRIVER=r600
 
 # Colored man pages
 man() {
