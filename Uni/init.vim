@@ -1,10 +1,12 @@
 " Vim-Plug Init ---------------------------------------------------------------
-set nocompatible
 filetype off
 
 
 " Vim-Plug --------------------------------------------------------------------
-call plug#begin('~/.conf')
+call plug#begin('~/.nvim_plugs')
+
+" Jellybeans theme
+Plug 'nanotech/jellybeans.vim'
 
 " Bar/Graphic
 Plug 'vim-airline/vim-airline'
@@ -28,17 +30,27 @@ Plug 'airblade/vim-gitgutter'
 " GPG
 Plug 'jamessan/vim-gnupg'
 
-" Ipython
-" Plug 'bfredl/nvim-ipy'
+" Gundo (Graph Undo) with neovim support
+Plug 'simnalamburt/mundo.vim'
+
+" Indent
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Man
 Plug 'vim-utils/vim-man'
 
-" MarkDown
-"Plug 'euclio/vim-markdown-composer'
+" Multiple Cursors
+Plug 'terryma/vim-multiple-cursors'
+
+" NerdCommenter
+Plug 'scrooloose/nerdcommenter'
 
 " NerdTree (Explorer File)
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Polyglot (Lang package collection°
+Plug 'sheerun/vim-polyglot'
 
 " R
 Plug 'Vim-R-plugin'
@@ -67,6 +79,7 @@ set wildmenu
 set encoding=utf8
 syntax on
 set ruler
+set background=dark
 colorscheme jellybeans
 
 " My Indentation
@@ -78,16 +91,17 @@ set rnu
 set laststatus=2
 set shiftwidth=2
 
-" 80 Red Line
-set t_Co=256
-hi ColorColumn ctermbg=52
-set colorcolumn=80
+" Config MapLeader
+let mapleader=','
+
+" 80 Red Line for C-Files
+au Filetype C hi ColorColumn ctermbg=52
+au Filetype C set colorcolumn=80
 
 " Show Tab
 set list
 hi SpecialKey ctermbg=black ctermfg=160
 set listchars=tab:>_
-
 
 " Plugin Config ---------------------------------------------------------------
 
@@ -109,18 +123,24 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
+" C.vim
+let  g:C_UseTool_cmake   = 'yes'
+let  g:C_UseTool_doxygen = 'yes'
+
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 
 " Epitech.vim
 let g:epitech_header = 1
 
-" Config MapLeader
-" let mapleader=','
+" Mundo
+map <F5> :MundoToggle<CR>
+""Persitent undo history
+set undofile
+set undodir=~/.config/nvim/undo
 
-" C.vim
-let  g:C_UseTool_cmake   = 'yes'
-let  g:C_UseTool_doxygen = 'yes'
+" Syntastic
+let g:syntastic_cpp_compiler_options='-std=c++11'
 
 " NerdTree
 map <F11> :NERDTreeToggle<CR>
@@ -128,3 +148,20 @@ map <F11> :NERDTreeToggle<CR>
 
 " Alias -----------------------------------------------------------------------
 cnoreabbrev sh term
+
+
+""" The DONT-FORGET things.
+"" Multiple cursors
+" <C-n>
+"" Mundo (Gundo)
+" <F5> to toggle
+"
+"" NerdCommenter
+" \cc to comment
+" \cu to uncomment
+"
+"" NerdTree
+" <F11> to toggle
+"
+"" Vim-indent-guides
+" <Leader>ig to toggle it
