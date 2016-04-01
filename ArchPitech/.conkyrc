@@ -1,0 +1,115 @@
+#!/usr/bin/conky -d -c
+##	.conkyrc configuration
+alignment top_right
+background yes
+border_margin 5
+border_width 5
+color0 555555			#
+color1 FCAF3E			# zolty
+color2 64574e			# braz
+color3 a82553			# rozowy f71f84
+color4 5e1014			# bordowy
+color5 64574e			# braz
+color6 a7a7a7			# szary
+color7 8888CC			#  (COOL)
+color8 9d9c61			# zolto-szary
+color9 525276			# niebiesko-szary
+cpu_avg_samples 2
+default_color e1e1e1		# szary a7a7a7
+default_outline_color 000000 	# Black
+default_shade_color 000000	# Black
+double_buffer yes
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+gap_x 5
+gap_y 40
+max_specials 1024
+max_user_text 10000
+maximum_width 180
+minimum_size 1000
+net_avg_samples 2
+no_buffers yes
+override_utf8_locale yes
+own_window yes
+own_window_colour 000000	# Black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type override 	## normal
+pad_percents 2			# to co nizej, miejsc po przecinku
+short_units yes			# krotka wersja podawania wielkosci dyskow np. 612.21M/3.80G
+stippled_borders 3
+text_buffer_size 8000
+total_run_times 0
+update_interval 1.0
+uppercase no
+use_spacer right
+use_xft yes
+xftalpha 0.75
+xftfont sans:size=7
+
+# ${diskiograph /dev/sda 15,180 a7a7a7 a7a7a7} # wskaznik pracy dysku
+# ${image /home/didisoft/.conky/didisoft.jpg -p 0,80 -s 26x28} # obrazki w conky
+
+
+TEXT
+${color2}${goto 10}${font DejaVu Sans Mono:size=44}${time %H}${font DejaVu Sans Mono:size=20}${voffset -25}'${time %M}${font DejaVu Sans Mono:size=8}${voffset -12}${time %S}
+${color2}${goto 85}${voffset 10}${font :size=8}${time %A}
+${color2}${goto 85}${voffset 1}${font :size=8}${time %d %B %Y}
+${color}${font RsbillsDng:size=14}O${font}${font DejaVu Sans Mono:size=8}${execpi 3600 DJS=`date +%_d`; cal -m | sed '1d' | sed '/./!d' | sed 's/$/                     /' | fold -w 21 | sed -n '/^.\{21\}/p' | sed 's/^/${alignc} /' | sed /" $DJS "/s/" $DJS "/" "'${color2}'"$DJS"'${color}'" "/}${font}
+
+
+${voffset -10}${color2}${font led:size=10}SYSTEM ${font}$hr
+${color}${sysname} Kernel: ${alignr}$kernel
+${color}Conky:${alignr}${conky_version}
+${color}Battery: ${alignr}${battery_percent BAT0}% / ${acpitemp}°C
+${color}${exec upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time to" | cut -d':' -f1}${alignr}${exec upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time to" | cut -d':' -f2}
+${color}Bright:${alignr}${exec xbacklight}
+
+
+${color2}${font led:size=10}CPU ${font}$hr
+${color}Core 1:  ${cpu cpu1}% $alignr ${freq_g (1)} GHz / ${exec sensors | grep "Core 0" | cut --bytes=14-21}°C
+${color}Core 2:  ${cpu cpu2}% $alignr ${freq_g (2)} GHz / ${exec sensors | grep "Core 1" | cut --bytes=14-21}°C
+# ${color}Core 3:  ${cpu cpu3}% $alignr ${freq_g (3)} GHz / ${exec sensors | grep "Core 2" | cut --bytes=14-21}°C
+# ${color}Core 4:  ${cpu cpu4}% $alignr ${freq_g (4)} GHz / ${exec sensors | grep "Core 3" | cut --bytes=14-21}°C
+
+${color}${font}NAME ${goto 90}PID${goto 120}CPU% ${alignr}MEM%
+${color}${font :size=6}${goto 9}${top name 1}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 156}${top mem 1}
+${color}${font :size=6}${goto 9}${top name 2}${goto 85}${top pid 2}${goto 120}${top cpu 2}${goto 156}${top mem 2}
+${color}${font :size=6}${goto 9}${top name 3}${goto 85}${top pid 3}${goto 120}${top cpu 3}${goto 156}${top mem 3}
+${color}${font :size=6}${goto 9}${top name 4}${goto 85}${top pid 4}${goto 120}${top cpu 4}${goto 156}${top mem 4}
+${color}${font :size=6}${goto 9}${top name 5}${goto 85}${top pid 5}${goto 120}${top cpu 5}${goto 156}${top mem 5}
+${color}${font :size=6}${goto 9}${top name 6}${goto 85}${top pid 6}${goto 120}${top cpu 6}${goto 156}${top mem 6}
+
+
+${color2}${font led:size=10}MEMORY / HDD / USB ${font}$hr
+${color}ram:      ${mem} / ${memmax} ${alignr} ${memperc}%
+${color}root:      ${fs_used /} / ${fs_size /} ${alignr} ${fs_used_perc /}%
+${color}home:   ${fs_used /home} / ${fs_size /home} ${alignr} ${fs_used_perc /home}%
+${color}tmp:     ${fs_used /tmp} / ${fs_size /tmp} ${alignr} ${fs_used_perc /tmp}%
+# ${color}${voffset -12}${execpi 5 ~/.conky/usb_nowe.sh}
+
+
+${color2}${font led:size=10}WIFI ${font}$hr
+${color}gateway IP: ${alignr}${gw_ip}
+${color}local IP: $alignr${addr wlo1}
+${color}public IP: $alignr${exec wget http://ipecho.net/plain -O - -q ; echo}
+${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}D${font}${color}${voffset -12}${goto 40}Down: ${downspeed wlo1}${color}
+${goto 40}Day: ${totaldown wlo1}${voffset -12}${alignr}${downspeedgraph wlo1 25,50 64574e 64574e}
+${color}${goto 10}${font pizzadude bullets:size=16}U${font}$color${voffset -12}${goto 40}Up: ${upspeed wlo1}${color}
+${goto 40}Day: ${totalup wlo1}${voffset -12}${alignr}${upspeedgraph wlo1 25,50 64574e 64574e}
+
+${color}${font}${alignc}AKA :$alignr${wireless_essid wlo1}
+# ${color}${font}${alignc}${execi 60 ~/.conky/uzytkownicysieci.sh}
+
+
+${if_running clementine}${color2}
+${font led:size=10}CLEMENTINE${font}$hr
+${voffset 5}${color}${alignc}${execi 5 conkyClementine --datatype=AR} - "${execi 5 conkyClementine --datatype=TI}"
+${color}${alignc}${execi 5 conkyClementine --datatype=AL}
+# ${color}${alignc}${mpd_bar 3,150}
+
+${color}${alignc}${execi 5 conkyClementine --datatype=PT}/${execi 5 conkyClementine --datatype=LE}
+${color}${alignc}${execi 5 conkyClementine -s "Playing,Paused,Stopped"}
+${endif}
