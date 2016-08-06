@@ -19,9 +19,9 @@ Plug 'c.vim'
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-" Completion
+" Auto-Completion
 Plug 'Shougo/deoplete.nvim'
-Plug 'zchee/deoplete-clang'
+" Plug 'zchee/deoplete-clang'     " Looks broken
 Plug 'zchee/deoplete-jedi'
 
 " Git
@@ -144,7 +144,7 @@ let  g:C_UseTool_cmake   = 'yes'
 let  g:C_UseTool_doxygen = 'yes'
 
 " Deoplete
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 " Epitech.vim
 let g:epitech_header = 1
@@ -161,7 +161,16 @@ set undodir=~/.config/nvim/undo
 " Neomake
 autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 0                                 " Stop telling me you've done
-let g:syntastic_cpp_compiler_options='-std=c++11'
+let g:neomake_cpp_clang_maker = {
+    \ 'args': ['-std=c++11']
+    \ }
+let g:neomake_python_flake8_maker = {
+    \ 'args': ['--ignore=E501,E402']
+    \ }
+let g:neomake_cpp_enabled_makers = ['clang']
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_open_list = 2
+let g:neomake_list_height = 2
 "" Neomake 'skin'
 highlight NeomakeWarningMsg ctermfg=237 ctermbg=227
 highlight NeomakeErrorMsg ctermfg=237 ctermbg=197
