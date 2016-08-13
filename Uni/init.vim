@@ -209,9 +209,11 @@ let g:deoplete#enable_at_startup = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Some troubleshooting                                                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" No colors
-"" Set TERM to xterm-256color in your terminal emulator
-
-" Mundo requires vim to be compiled with python 2.4+
+" How to use this init.vim
+"" curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"" pacman -S flake8
 "" pip2 install neovim
 "" pip3 install neovim
+
+" No colors
+"" Set TERM to xterm-256color in your terminal emulator
