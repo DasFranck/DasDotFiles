@@ -16,39 +16,40 @@ plugins=(git)
 
 ## User configuration
 
-# AutoRehash
-zstyle ':completion:*' rehash true
-
 # Alias
-alias dhcpcd='sudo dhcpcd'
-alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias netsoul='sudo /home/dasfranck/jogsoul.pl /home/dasfranck/jogsoul.conf'
+alias dhcpcd='sudo dhcpcd'
 alias mount='sudo mount'
-alias pacman='sudo pacman'
-alias p='pwd'
-alias pg='sudo ping google.fr -c 15'
-alias tree='tree -C'
 alias umount='sudo umount'
+alias mosucks='mount /dev/sda8 ~/osuce'
+alias umosucks='umount ~/osuce'
 alias wifi-menu='sudo wifi-menu'
+alias ocaml='rlwrap ocaml'
+#alias git push='git push -v'
+
+# TrollScripts
+alias inf-eject='while :; do eject; done'
 
 # DaScripts
 alias DasIP='echo "$(curl -s http://ipecho.net/plain)"'
-alias DasPing='sudo ping daspat.fr -c 15'
-alias DasMount='sudo mount /dev/sdb1 /mnt/usb && cd /mnt/usb'
-alias DaSuya='yaourt -Suya --noconfirm && sudo pacman-optimize'
-alias DaSyu='yaourt -Syu --noconfirm && sudo pacman-optimize'
+alias DasMount='sudo mount /dev/sdc1 /mnt/usb && cd /mnt/usb'
+alias DasPing='sudo ping google.fr -c 15'
+alias DaSuya='yaourt -Suya'
+alias DaSyu='yaourt -Syu'
 alias DasUmount='sudo umount /mnt/usb/'
 alias DasV='uname -a'
 alias pacman='sudo pacman'
 alias refreshmirrors='sudo reflector --verbose -l 200 --sort rate --save /etc/pacman.d/mirrorlist'
+alias vim='nvim'
+alias v='/usr/bin/vim'
 
 source $ZSH/oh-my-zsh.sh
 
-# Browser
+#Browser
 export BROWSER="firefox"
 
-# Editor
+#Editor
 export EDITOR="vim"
 
 
@@ -61,26 +62,4 @@ export LC_ADDRESS="fr_FR.utf8"
 export LC_TELEPHONE="fr_FR.utf8"
 export LC_MEASUREMENT="fr_FR.utf8"
 
-# Colored man pages
-man() {
-    env LESS_TERMCAP_mb=$'\E[01;31m' \
-    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-    LESS_TERMCAP_me=$'\E[0m' \
-    LESS_TERMCAP_se=$'\E[0m' \
-    LESS_TERMCAP_so=$'\E[38;5;246m' \
-    LESS_TERMCAP_ue=$'\E[0m' \
-    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-    man "$@"
-}
-
-# GPG-Agent as SSH-Agent
-if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
-  gpg-connect-agent /bye >/dev/null 2>&1
-fi
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
-fi
-GPG_TTY=$(tty)
-export GPG_TTY
-gpg-connect-agent updatestartuptty /bye >/dev/null
+export GOPATH=~/go
