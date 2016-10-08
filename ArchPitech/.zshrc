@@ -26,6 +26,8 @@ alias mosucks='mount /dev/sda8 ~/osuce'
 alias umosucks='umount ~/osuce'
 alias wifi-menu='sudo wifi-menu'
 alias ocaml='rlwrap ocaml'
+alias tree='tree -aC'
+alias zrc='. ~/.zshrc'
 #alias git push='git push -v'
 
 # TrollScripts

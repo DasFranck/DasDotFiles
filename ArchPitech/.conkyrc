@@ -1,59 +1,60 @@
-#!/usr/bin/conky -d -c
-##	.conkyrc configuration
-alignment top_right
-background yes
-border_margin 5
-border_width 5
-color0 555555			#
-color1 FCAF3E			# zolty
-color2 64574e			# braz
-color3 a82553			# rozowy f71f84
-color4 5e1014			# bordowy
-color5 64574e			# braz
-color6 a7a7a7			# szary
-color7 8888CC			#  (COOL)
-color8 9d9c61			# zolto-szary
-color9 525276			# niebiesko-szary
-cpu_avg_samples 2
-default_color e1e1e1		# szary a7a7a7
-default_outline_color 000000 	# Black
-default_shade_color 000000	# Black
-double_buffer yes
-draw_borders no
-draw_graph_borders no
-draw_outline no
-draw_shades no
-gap_x 5
-gap_y 40
-max_specials 1024
-max_user_text 10000
-maximum_width 180
-minimum_size 1000
-net_avg_samples 2
-no_buffers yes
-override_utf8_locale yes
-own_window yes
-own_window_colour 000000	# Black
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_transparent yes
-own_window_type override 	## normal
-pad_percents 2			# to co nizej, miejsc po przecinku
-short_units yes			# krotka wersja podawania wielkosci dyskow np. 612.21M/3.80G
-stippled_borders 3
-text_buffer_size 8000
-total_run_times 0
-update_interval 1.0
-uppercase no
-use_spacer right
-use_xft yes
-xftalpha 0.75
-xftfont sans:size=7
+conky.config = {
+--!/usr/bin/conky -d -c
+--#	.conkyrc configuration
+	alignment = 'top_right',
+	background = true,
+	border_width = 5,
+	color0 = '#555555',
+	color1 = '#FCAF3E',-- zolty
+	color2 = '#64574e',-- braz
+	color3 = '#a82553',-- rozowy f71f84
+	color4 = '#5e1014',-- bordowy
+	color5 = '#64574e',-- braz
+	color6 = '#a7a7a7',-- szary
+	color7 = '#8888CC',--  (COOL)
+	color8 = '#9d9c61',-- zolto-szary
+	color9 = '#525276',-- niebiesko-szary
+	cpu_avg_samples = 2,
+	default_color = '#e1e1e1',-- szary a7a7a7
+	default_outline_color = '#000000',-- Black
+	default_shade_color = '#000000',-- Black
+	double_buffer = true,
+	draw_borders = false,
+	draw_graph_borders = false,
+	draw_outline = false,
+	draw_shades = false,
+	gap_x = 25,
+	gap_y = 40,
+	max_user_text = 10000,
+	maximum_width = 180,
+	minimum_width = 1000,
+	net_avg_samples = 2,
+	no_buffers = true,
+	override_utf8_locale = true,
+	own_window = true,
+	own_window_colour = '#000000',-- Black
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_transparent = true,
+	own_window_type = 'override',--# normal
+	pad_percents = 2,-- to co nizej, miejsc po przecinku
+	short_units = true,-- krotka wersja podawania wielkosci dyskow np. 612.21M/3.80G
+	stippled_borders = 3,
+	text_buffer_size = 8000,
+	total_run_times = 0,
+	update_interval = 1.0,
+	uppercase = false,
+	use_spacer = 'right',
+	use_xft = true,
+	xftalpha = 0.75,
+	font = 'sans:size=7',
 
-# ${diskiograph /dev/sda 15,180 a7a7a7 a7a7a7} # wskaznik pracy dysku
-# ${image /home/didisoft/.conky/didisoft.jpg -p 0,80 -s 26x28} # obrazki w conky
+-- ${diskiograph /dev/sda 15,180 a7a7a7 a7a7a7} # wskaznik pracy dysku
+-- ${image /home/didisoft/.conky/didisoft.jpg -p 0,80 -s 26x28} # obrazki w conky
 
 
-TEXT
+};
+
+conky.text = [[
 ${color2}${goto 10}${font DejaVu Sans Mono:size=44}${time %H}${font DejaVu Sans Mono:size=20}${voffset -25}'${time %M}${font DejaVu Sans Mono:size=8}${voffset -12}${time %S}
 ${color2}${goto 85}${voffset 10}${font :size=8}${time %A}
 ${color2}${goto 85}${voffset 1}${font :size=8}${time %d %B %Y}
@@ -113,3 +114,4 @@ ${color}${alignc}${execi 5 conkyClementine --datatype=AL}
 ${color}${alignc}${execi 5 conkyClementine --datatype=PT}/${execi 5 conkyClementine --datatype=LE}
 ${color}${alignc}${execi 5 conkyClementine -s "Playing,Paused,Stopped"}
 ${endif}
+]];

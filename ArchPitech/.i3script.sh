@@ -6,7 +6,7 @@ i3status --config ~/.i3status.conf | while :
 do
         read line
         LG=$(setxkbmap -query | awk '/layout/{print $2}')
-        if [ $LG == "fr" ]
+        if [ $LG == "gb" ]
         then
             dat="[{ \"full_text\": \"LANG: $LG\", \"color\":\"#009E00\" },"
         else
