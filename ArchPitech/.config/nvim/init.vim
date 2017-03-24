@@ -9,6 +9,7 @@ function! VMC_BuildComposer(info)
   endif
 endfunction
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Plugins and Vim-Plug                                                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -69,6 +70,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Polyglot (Lang package collection)
 Plug 'sheerun/vim-polyglot'
 
+" Rainbow Parentheses
+Plug 'kien/rainbow_parentheses.vim'
+
 " Syntax Check
 " Plug 'scrooloose/syntastic'
 Plug 'neomake/neomake'
@@ -103,7 +107,7 @@ colorscheme jellybeans
 
 " My dear ruler
 set ruler
-set rnu                                                   " Relative line number
+set relativenumber                                        " Relative line number
 
 " Backspace is a backspace
 set backspace=indent,eol,start
@@ -122,7 +126,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set incsearch                                             " Incremental search
 
 " Config MapLeader
-let mapleader=','
+let g:mapleader=','
 
 " 80 Red Line for C-Files
 autocmd Filetype C highlight ColorColumn ctermbg=52
@@ -139,7 +143,7 @@ set listchars=tab:>_
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Airline
-let g:Powerline_symbols="fancy"
+let g:Powerline_symbols='fancy'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 0
@@ -179,15 +183,14 @@ set undodir=~/.config/nvim/undo
 autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 0                                 " Stop telling me you've done
 let g:neomake_cpp_clang_maker = {
-    \ 'args': ['-std=c++11']
+    \ 'args': ['-std=c++11', '-I/usr/include/opus', '-lopus', '-I/usr/include/qt/QtNetwork', '-I/usr/include/qt', '-I/usr/include/qt/QtCore', '-I/usr/include/qt', '-lQt5Network', '-lQt5Core', '-fPIC']
     \ }
 let g:neomake_python_flake8_maker = {
     \ 'args': ['--ignore=E501,E402']
     \ }
 let g:neomake_cpp_enabled_makers = ['clang']
 let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_open_list = 2
-let g:neomake_list_height = 2
+let g:neomake_list_height = 5
 "" Neomake 'skin'
 highlight NeomakeWarningMsg ctermfg=237 ctermbg=227
 highlight NeomakeErrorMsg ctermfg=237 ctermbg=197
@@ -210,6 +213,12 @@ let g:deoplete#enable_at_startup = 1
 "" Mundo (Gundo)
 " <F5> to toggle
 
+"" Neomake
+" :lopen to open the error windows
+" :lclose to close it
+" :ll to jump to the first error
+" :ll # to jump to the error #
+
 "" NerdCommenter
 " <Leader>cc to comment
 " <Leader>cn to comment with nesting forced
@@ -229,8 +238,8 @@ let g:deoplete#enable_at_startup = 1
 " How to use this init.vim
 "" curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "" pacman -S flake8
-"" pip2 install neovim
-"" pip3 install neovim
+"" pip2 install neovim jedi
+"" pip3 install neovim jedi
 
 " No colors
 "" Set TERM to xterm-256color in your terminal emulator
