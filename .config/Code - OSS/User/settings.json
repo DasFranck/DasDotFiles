@@ -1,0 +1,6 @@
+{
+    "workbench.colorTheme": "Jellybeans",
+    "workbench.iconTheme": "vscode-icons",
+    "explorer.confirmDragAndDrop": false,
+    "git.confirmSync": false
+}
