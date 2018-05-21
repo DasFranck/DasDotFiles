@@ -47,7 +47,7 @@ floating_modifier $mod
 bindsym $mod+Shift+Return exec terminology
 
 # Lock Screen
-bindsym $mod+Shift+s exec slimlock
+bindsym $mod+Shift+s exec light-locker-command -l
 
 # Launch firefox
 bindsym $mod+f exec firefox
