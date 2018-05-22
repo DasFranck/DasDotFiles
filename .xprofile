@@ -1,2 +1,4 @@
 light-locker &
 nm-applet &
+xset -b &
+pulseaudio -D &
