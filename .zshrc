@@ -6,7 +6,6 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 
-#ZSH_THEME="das"
 ZSH_THEME="geoffgarside"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -14,6 +13,8 @@ ZSH_THEME="geoffgarside"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
 
 ## User configuration
 # Alias
@@ -39,8 +40,11 @@ alias refreshmirrors='sudo reflector --verbose -l 200 --sort rate --save /etc/pa
 alias vim='nvim'
 alias v='/usr/bin/vim'
 alias vsc='code'
-
-source $ZSH/oh-my-zsh.sh
+alias ls='lsd'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 # Browser
 export BROWSER="firefox"
