@@ -27,7 +27,7 @@ cyan =
 margin-top = 5
 margin-bottom = 5
 
-[bar/example]
+[bar/dasbar]
 width = 100%
 height = 24
 offset-x = 0
