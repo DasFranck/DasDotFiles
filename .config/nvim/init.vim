@@ -41,6 +41,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Rainbow Parentheses
 Plug 'kien/rainbow_parentheses.vim'
 
+" Syntax Highlight
+Plug 'raimon49/requirements.txt.vim'
+Plug 'mboughaba/i3config.vim'
+
 " Usless Endline Whitespaces Colored
 Plug 'ntpeters/vim-better-whitespace'
 
