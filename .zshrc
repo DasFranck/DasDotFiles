@@ -1,98 +1,128 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="/home/das/.oh-my-zsh"
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="geoffgarside"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker git pip python vscode)
+plugins=(
+  autojump
+  cp
+  git
+)
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 
-## User configuration
-# Alias
-alias dhcpcd='sudo dhcpcd'
-alias mount='sudo mount'
-alias umount='sudo umount'
-alias wifi-menu='sudo wifi-menu'
-alias ocaml='rlwrap ocaml'
-alias tree='tree -aC'
-alias zrc='. ~/.zshrc'
-# alias git push='git push -v'
+unsetopt BEEP
 
-# DaScripts
-alias DasIP='echo "$(curl -s http://ipecho.net/plain)"'
-alias DasMount='sudo mount /dev/sdc1 /mnt/usb && cd /mnt/usb'
-alias DasPing='sudo ping google.fr -c 15'
-alias DaSuya='yaourt -Suya'
-alias DaSyu='yaourt -Syu'
-alias DasUmount='sudo umount /mnt/usb/'
-alias DasV='uname -a'
-alias pacman='sudo pacman'
-alias refreshmirrors='sudo reflector --verbose -l 200 --sort rate --save /etc/pacman.d/mirrorlist'
-alias vim='nvim'
-alias v='/usr/bin/vim'
-alias vsc='code'
-alias ls='lsd'
-alias ll='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
-
-# Browser
-export BROWSER="firefox"
-
-# Editor
 export EDITOR="nvim"
+alias c="bat"
+alias du="dust"
+alias g!="git commit --amend --no-edit"
+alias gdl="git diff HEAD^ HEAD"
+alias gfu="git add . && git commit --amend --no-edit && git push --force"
+alias gpt="git push --tags"
+alias l="exa --long --header --git"
+alias ls="exa"
+alias ll="exa --long --header"
+alias la="exa --long --header --all --group --git"
+alias lar="exa --long --header --all --group --git --recurse"
+alias lat="exa --long --header --all --group --git --tree"
+alias ps="procs"
+alias top="bottom"
+alias v="nvim"
 
-# Locale
-export LC_NUMERIC="fr_FR.utf8"
-export LC_TIME="fr_FR.utf8"
-export LC_MONETARY="fr_FR.utf8"
-export LC_PAPER="fr_FR.utf8"
-export LC_ADDRESS="fr_FR.utf8"
-export LC_TELEPHONE="fr_FR.utf8"
-export LC_MEASUREMENT="fr_FR.utf8"
+eval "$(starship init zsh)"
 
-export GOPATH=~/go
+# User configuration
 
-rc(){
-  systemctl list-unit-files --type=service |\
-  sed 's/.service//g' |\
-  sed '/static/d' |\
-  sed '/indirect/d' |\
-  sed '/systemd/d' |\
-  sed '/dbus-org/d' |\
-  sed '/canberra/d'|\
-  sed '/wpa_supplicant/d' |\
-  sed '/netctl/d' |\
-  sed '/rfkill/d' |\
-  sed '/krb5/d' |\
-  tail -n+2 |\
-  head -n -2 |\
-  sed 's/\(^.*enabled.*$\)/[x] \1/' |\
-  sed 's/enabled//g' |\
-  sed 's/\(^.*disabled.*$\)/[ ] \1/' |\
-  sed 's/disabled//g' |\
-  sed 's/[ \t]*$//' |\
-  while read line; do
-      if [[ $line == *'[x]'* ]]; then
-        printf "\033[0;32m$line\n"
-      else
-        printf "\033[1;30m$line\n"
-      fi
-  done
-  syncthing_status=`systemctl is-active syncthing@${USER}.service`
-  if [[ $syncthing_status == "active" ]]; then
-    printf "\033[0;32m[x] syncthing (${USER})\n"
-  else
-    printf "\033[1;30m[ ] syncthing (${USER})\n"
-  fi
-}
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
