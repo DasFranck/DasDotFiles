@@ -42,14 +42,16 @@ client.background       $black
 
 set $mod Mod4
 
+mouse_warping none
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Shift+Return exec termite
+bindsym $mod+Shift+Return exec alacritty
 
 # Lock Screen
-bindsym $mod+Shift+s exec light-locker-command -l
+bindsym $mod+Shift+s exec /usr/local/bin/lock
 
 # Launch firefox
 bindsym $mod+f exec firefox
@@ -201,5 +203,5 @@ for_window [class="Godot_Engine"] floating enable
  ##################
 exec_always --no-startup-id feh --bg-scale /home/dasfranck/.wallpaper/Mountain.jpg
 exec_always --no-startup-id killall polybar; polybar dasbar
-exec_always compton --blur-background
+# exec_always compton --blur-background
 exec_always conky
